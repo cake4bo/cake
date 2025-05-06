@@ -1,6 +1,6 @@
 import torch
 
-from cakes import CAKES
+from cake import CAKE
 from gp import fit_gp_model
 from benchmark import get_objective
 from utils import generate_train_data
@@ -32,7 +32,7 @@ configs = {
     "device": device
 }
 
-method = "cakes" # "cakes" or "fixed or "adaptive"
+method = "cake" # "cake" or "fixed or "adaptive"
 print(f"method: {method}")
 
 n = 5 # number of initial observations
@@ -50,11 +50,13 @@ for r in range(REPEAT):
     train_y = train_y.to(device)
     init_y = train_y.max().item() # get the initial best value
 
-    # initialize CAKES
-    if method == "cakes":
-        cakes = CAKES(model_name = "gpt-4o-mini", device=device)
-        strategy = cakes.model_name
+    # initialize CAKE
+    if method == "cake":
+        cake = CAKE(model_name="gpt-4o-mini", device=device)
+        strategy = cake.model_name
         print(f"LLM: {strategy}")
+        print(f"base kernels: {cake.base_kernels}")
+        print(f"operators: {cake.operators}")
 
     for i in tqdm(range(BUDGET)):
         # compute incumbents and GAP
@@ -63,10 +65,10 @@ for r in range(REPEAT):
         print(f"incumbent: {incumbents[r, i]:.4f}")
         print(f"GAP: {gap[r, i]:.4f}")
 
-        # use CAKES to select the kernel
-        if method == "cakes":
-            cakes.run(train_x, train_y)
-            next_x = cakes.get_next_query(bounds)
+        # use CAKE to select the kernel
+        if method == "cake":
+            cake.run(train_x, train_y)
+            next_x = cake.get_next_query(bounds)
 
         next_y = objective(next_x)
 

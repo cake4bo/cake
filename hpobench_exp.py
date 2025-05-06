@@ -1,6 +1,6 @@
 import torch
 
-from cakes import CAKES
+from cake import CAKE
 from gp import fit_gp_model
 from benchmark import get_task
 from utils import *
@@ -24,7 +24,7 @@ BUDGET = 25 # number of queries
 REPEAT = 5 # number of repetitions
 method = "cakes"
 
-if method == "cakes":
+if method == "cake":
     strategy = "gpt-4o-mini"
 
 incumbents = torch.zeros(REPEAT, BUDGET, device=device)
@@ -48,9 +48,9 @@ for r in range(REPEAT):
     train_x = train_x.to(device)
     train_y = train_y.to(device)
 
-    # initialize CAKES
-    if method == "cakes":
-        cakes = CAKES(model_name=strategy, device=device)
+    # initialize CAKE
+    if method == "cake":
+        cake = CAKE(model_name=strategy, device=device)
         print(f"LLM: {strategy}")
 
     for i in tqdm(range(BUDGET)):
@@ -58,10 +58,10 @@ for r in range(REPEAT):
         incumbents[r, i] = train_y.max().item()
         print(f"incumbent: {incumbents[r, i]:.4f}")
 
-        # use CAKES to select the kernel
-        if method == "cakes":
-            cakes.run(train_x, train_y)
-            next_x = cakes.get_next_query(bounds)
+        # use CAKE to select the kernel
+        if method == "cake":
+            cake.run(train_x, train_y)
+            next_x = cake.get_next_query(bounds)
 
         cand_x = preprocess_query(next_x, ml_model)
         next_y = torch.tensor([objective(cand_x)])

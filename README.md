@@ -1,6 +1,6 @@
 # Context-Aware Kernel Search for Bayesian Optimization with Large Language Models
 
-Official code repository for "Context-Aware Kernel Search for Bayesian Optimization with Large Language Models"
+Official code repository for "Kernel Design for Bayesian Optimization Is a Piece of CAKE"
 
 ## Setup
 
@@ -8,8 +8,8 @@ Official code repository for "Context-Aware Kernel Search for Bayesian Optimizat
 2. Set up a Conda environment:
 ```
 git clone https://github.com/cakes4bo/cake.git
-conda create -n cakes python=3.9
-conda activate cakes
+conda create -n cake python=3.9
+conda activate cake
 ```
 
 3. Install the requirements:
