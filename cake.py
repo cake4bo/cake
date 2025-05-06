@@ -47,8 +47,6 @@ class CAKE:
             mutation_prob=0.7,
             num_population=6, # number of kernels to keep in the population
             model_name="gpt-4o-mini", # LLM to use
-            temperature=0.7, # higher temperature indicates more randomness
-            top_p=0.95, # higher top_p indicates more diversity
             keys_path="./secrets.txt", # path to API key
             device="cpu"
         ):
@@ -84,9 +82,7 @@ class CAKE:
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": message}
-            ],
-            temperature=self.temperature,
-            top_p=self.top_p
+            ]
         )
         return response["choices"][0]["message"]["content"]
 
