@@ -1,11 +1,13 @@
-# Official code repository for "Kernel Design for Bayesian Optimization Is a Piece of CAKE"
+# Context-Aware Kernel Search for Bayesian Optimization with Large Language Models
+
+Official code repository for "Kernel Design for Bayesian Optimization Is a Piece of CAKE"
 
 ## Setup
 
 1. Create a `secrets.txt` file and provide the OpenAPI key
 2. Set up a Conda environment:
 ```
-git clone https://github.com/cakes4bo/cake.git
+git clone https://github.com/cake4bo/cake.git
 conda create -n cake python=3.9
 conda activate cake
 ```

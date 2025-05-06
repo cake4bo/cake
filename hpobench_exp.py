@@ -22,7 +22,7 @@ ml_model = "lr" # ml model to use
 n = 5 # number of initial observations
 BUDGET = 25 # number of queries
 REPEAT = 5 # number of repetitions
-method = "cakes"
+method = "cake"
 
 if method == "cake":
     strategy = "gpt-4o-mini"

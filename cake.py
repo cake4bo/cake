@@ -255,12 +255,12 @@ class CAKE:
 
     def run(self, train_x, train_y):
         """
-        Function to run CAKES for kernel selection.
+        Function to run CAKE for kernel selection.
         Args:
             train_x (torch.Tensor): training input data.
             train_y (torch.Tensor): training output data.
         Returns:
-            str: the best kernel selected by CAKES.
+            str: the best kernel selected by CAKE.
         """
         self.update_data(train_x, train_y)
         self.compute_fitness()
