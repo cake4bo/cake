@@ -1,6 +1,4 @@
-# Context-Aware Kernel Search for Bayesian Optimization with Large Language Models
-
-Official code repository for "Kernel Design for Bayesian Optimization Is a Piece of CAKE"
+# Official code repository for "Kernel Design for Bayesian Optimization Is a Piece of CAKE"
 
 ## Setup
 
